@@ -46,57 +46,32 @@ I also want to see my booking requests which I made to a host.
 
 ### ROUTES ###
 
-GET /auth/login
-If it's OK we will render /auth/login
-If it's not OK we will show errors.
-
-POST /auth/login
-We will send on the body:
-    - username
-    - password
-If the user's login it's OK redirect to /home.
-If the user's login it's not OK we will show errors.
-
-
-GET /auth/signup
-If it's OK we will render /auth/signup
-If it's not OK we will show errors.
-
-POST /auth/signup
-We will send on the body:
-    - username
-    - email
-    - password
-    - location
-If the user's signup it's OK redirect to /auth/login.
-If the user's signup it's not OK we will render /auth/signup with errors.
-
-GET /auth/logout
-If there isn't an active session, redirect to /auth/login.
-If there is an active session, we destroy the session an redirect to /auth/login.
-
-GET /publish
-If it's OK we will render /publish
-If it's not OK we will show errors.
-
-
-### He llegado hasta aquí Miguel ###
-POST /publish
-	Si todo esta bien redirige a /publish con un body:
-Población
-Localización
-Calle
-Imágenes
-Servicios ofrecidos
-
-	Si todo sale mal, renderiza /publish con los errores. 
-
-GET /housing
-	Renderizar  la ruta de /housing con la info de los alojamientos
-
-GET /bookings
-	Renderizar la ruta de /booking con la info de los alojamientos
-
+# GET /auth/login #
+	If it's OK we will render /auth/login
+	If it's not OK we will show errors.
+# POST /auth/login #
+	We will send on the body:
+   	 	Username
+  	 	Password
+	If the user's login it's OK redirect to /home.
+	If the user's login it's not OK we will show errors.
+# GET /auth/signup #
+	If it's OK we will render /auth/signup
+	If it's not OK we will show errors.
+# POST /auth/signup #
+	We will send on the body:
+    		Username
+		 Email
+		Password
+    		Location
+	If the user's signup it's OK redirect to /auth/login.
+	If the user's signup it's not OK we will render /auth/signup with errors.
+# GET /auth/logout #
+	If there isn't an active session, redirect to /auth/login.
+	If there is an active session, we destroy the session an redirect to /auth/login.
+# GET /publish #
+	If it's OK we will render /publish
+	If it's not OK we will show errors.
 
 
 ### Models ###
