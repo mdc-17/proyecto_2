@@ -13,11 +13,15 @@ router.use((req, res, next) => {
 	res.redirect('/auth/login');
 });
 
-router.get('/publish', (req, res, next) => {
+router.get('/', (req, res, next) => {
 	res.render('publish');
 });
 
-router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
+
+//Falta ver cual es el método de cloudinary para poder subir más de una foto.
+//¿Si se sube de una en una se mete en el array de fotos?
+
+router.post('/', uploadCloud.single('photos'), (req, res, next) => {
 	const { hostRequest, location, address, services } = req.body;
 	const homeImages = req.file.url;
 	const theUser = req.session.currentUser._id;

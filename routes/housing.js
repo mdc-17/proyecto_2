@@ -13,6 +13,13 @@ router.use((req, res, next) => {
   });
 
 
+  router.get('/', (req,res,next) => {
+    res.render('housing')
+});
+
+
+
+
 
 
 module.exports = router;
