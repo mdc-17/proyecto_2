@@ -27,7 +27,7 @@ Home.find()
 router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 	const { hostRequest, location, address, services } = req.body;
 	const homeImages = req.file.url;
-	const theUser = req.session.currentUser._id;
+	const theUserID = req.session.currentUser._id;
 
 	if (hostRequest === '' || location === '' || address === '') {
 		res.render('publish/publish', {
@@ -36,17 +36,20 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 		return;
 	}
 
-  const homeSubmission = { host: theUser, hostRequest, location, address, homeImages, services };
+  const homeSubmission = { host: theUserID, hostRequest, location, address, homeImages, services };
   const newHome = new Home (homeSubmission);
-  req.session.currentUser.isHost=true;
 
-  User.save()
+ User.findOneAndUpdate({_id: theUserID}, {isHost:true})
+	 .then()
+	 .catch((err) => next(err))	
    	
   newHome.save()
       .then(() => {
         res.redirect('/publish/publish')
       })
-      .catch((err) => next(err))
+	  .catch((err) => next(err))
+	  
+	
       
 
 });
