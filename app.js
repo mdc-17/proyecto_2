@@ -27,10 +27,7 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const authRouter = require('./routes/auth');
-const laundryRouter = require('./routes/laundry');
+
 
 var app = express();
 
@@ -73,10 +70,21 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+
+const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
+const bookingsRouter = require('./routes/bookings');
+const housingRouter = require('./routes/housing');
+const publishRouter = require('./routes/publish');
+const mainRouter = require ('./routes/main')
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/', authRouter);
-app.use('/', laundryRouter);
+app.use('/auth', authRouter);
+app.use('/bookings', bookingsRouter);
+app.use('/housing', housingRouter);
+app.use('/publish', publishRouter);
+app.use('/main', mainRouter);
 
 
 // catch 404 and forward to error handler
