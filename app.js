@@ -78,6 +78,7 @@ const bookingsRouter = require('./routes/bookings');
 const housingRouter = require('./routes/housing');
 const publishRouter = require('./routes/publish');
 const mainRouter = require ('./routes/main')
+const profileRouter = require ('./routes/profile')
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
@@ -85,6 +86,7 @@ app.use('/bookings', bookingsRouter);
 app.use('/housing', housingRouter);
 app.use('/publish', publishRouter);
 app.use('/main', mainRouter);
+app.use('/profile', profileRouter);
 
 
 // catch 404 and forward to error handler
