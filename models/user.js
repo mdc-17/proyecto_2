@@ -6,18 +6,18 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
-		match: [ /^[a-zA-Z]+(([‘,. -][a-zA-Z ])?[a-zA-Z]*)*$/g, 'is invalid' ]
+		//match: [ /^[a-zA-Z]+(([‘,. -][a-zA-Z ])?[a-zA-Z]*)*$/g, 'is invalid' ]
 	},
 	email: {
 		type: String,
 		required: true,
 		unique: true,
-		match: [ /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/g, 'is invalid' ]
+		//match: [ /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/g, 'is invalid' ]
 	},
 	password: {
 		type: String,
 		required: true,
-		match: [ /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/g, 'is invalid' ]
+		//match: [ /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/g, 'is invalid' ]
 	},
 	photo_user: String,
 	isHost: { type: Boolean, default: false },
