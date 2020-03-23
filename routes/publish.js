@@ -9,14 +9,12 @@ router.use((req, res, next) => {
 		next();
 		return;
 	}
-
 	res.redirect('/auth/login');
 });
 
 router.get('/publish', (req, res, next) => {
 Home.find()
 	.then((homes) => {
-		console.log(homes);
 		res.render('publish/publish', { homes })
 	})
 	.catch((err) => next(err))
@@ -43,7 +41,7 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 
   newHome.save()
       .then(() => {
-        res.render('publish/publish', { newHome })
+        res.redirect('/publish/publish')
       })
       .catch((err) => next(err))
       
