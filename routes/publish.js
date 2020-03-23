@@ -38,7 +38,10 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 
   const homeSubmission = { host: theUser, hostRequest, location, address, homeImages, services };
   const newHome = new Home (homeSubmission);
+  req.session.currentUser.isHost=true;
 
+  User.save()
+   	
   newHome.save()
       .then(() => {
         res.redirect('/publish/publish')

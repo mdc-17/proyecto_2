@@ -21,7 +21,7 @@ const userSchema = new Schema({
 	},
 	photo_user: String,
 	isHost: { type: Boolean, default: false },
-	isGuest: { type: Boolean, default: false },
+	isGuest: { type: Boolean, default: true },
 	requests: [ { type: String } ],
 	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
 	phoneNumber: {type: Number, required: true},
