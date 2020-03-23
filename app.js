@@ -14,7 +14,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 mongoose
-  .connect('mongodb://localhost/uber-for-loundry', {
+  .connect('mongodb://localhost/hellou', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -44,7 +44,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'never do your own laundry again',
+  secret: 'hellou',
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 60000 },
