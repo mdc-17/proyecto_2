@@ -14,7 +14,7 @@ router.use((req, res, next) => {
   router.get('/profile', (req, res, next) => {
     User.findOne({_id: req.session.currentUser._id})
       .then((user) => {
-        console.log(user);
+        
         res.render('profile/profile', { user })
       })
       .catch((err) => next(err))
@@ -29,6 +29,15 @@ router.use((req, res, next) => {
           console.log(error);
         })
       });
+
+      router.post('/edit', (req, res, next) => {
+        const {username, email, phoneNumber, photo_user }=req.body;
+        User.findOneAndUpdate({_id: req.query.user_id},{$set: {username, email, phoneNumber, photo_user }},{new:true})
+            .then(() =>
+            res.redirect('/profile/profile'))
+            .catch((err) => next(err));
+      });
+
 
    
       

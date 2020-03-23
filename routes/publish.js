@@ -13,9 +13,9 @@ router.use((req, res, next) => {
 });
 
 router.get('/publish', (req, res, next) => {
-Home.find()
-	.then((homes) => {
-		res.render('publish/publish', { homes })
+Home.find({ host: req.session.currentUser._id })
+	.then((homes) => {		
+		res.render('publish/publish', { homes })	
 	})
 	.catch((err) => next(err))
 });
