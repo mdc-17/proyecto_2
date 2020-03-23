@@ -1,9 +1,8 @@
-{{#each users}}
-<img src="{{this}}">
 
-{{username}} 
-{{email}}
-{{phoneNumber}}
+{{!-- DE MOMENTO SIN FOTO<img src="{{currentUser}}"> --}}
 
-<a href="/profile/edit?user_id={{this._id}}" class="edit-button">EDIT</a>
-{{/each}}
+{{user.username}} 
+{{user.email}}
+{{user.phoneNumber}}
+
+<a href="/profile/edit?user_id={{user._id}}" class="edit-button">EDIT</a>
