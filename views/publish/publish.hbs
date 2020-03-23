@@ -1,0 +1,18 @@
+<a href="/publish/add">Añadir</a>
+
+{{#each homes}}
+<h2>{{hostRequest}}</h2>
+{{#each homeImages}}
+<img src="{{this}}">
+{{/each}}
+<p>{{location}}</p>
+<p>{{address}}</p>
+<ul>
+{{#each services}}
+
+<li>{{this}}</li>
+
+{{/each}}
+
+</ul>
+{{/each}} 

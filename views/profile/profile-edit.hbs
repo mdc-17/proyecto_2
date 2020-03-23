@@ -1,0 +1,15 @@
+<form action="/profile/edit?user_id={{user._id}}" method="post">
+    <label for="">Nombre de usuario</label>
+    <input type="text" name="username" value="{{user.username}}">
+
+    <label for="">Email:</label>
+    <input type="text" name="email" value="{{user.email}}">
+
+    <label for="">Phone Number:</label>
+    <input type="text" name="phoneNumber" value="{{user.phoneNumber}}">
+
+    <label for="">Foto:</label>
+    <input type="file" name="photos">
+
+    <button type="submit">EDIT</button>
+</form>

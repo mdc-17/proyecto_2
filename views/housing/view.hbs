@@ -1,0 +1,15 @@
+<h2>{{home.hostRequest}}</h2>
+{{#each home.homeImages}}
+<img src="{{this}}">
+{{/each}}
+<p>{{home.location}}</p>
+<p>{{home.address}}</p>
+<ul>
+{{#each services}}
+<li>{{this}}</li>
+{{/each}}
+</ul>
+{{/each}} 
+<form action="/booking/booking" method="post">
+<button type="submit">Solicitar reserva</button>
+</form>

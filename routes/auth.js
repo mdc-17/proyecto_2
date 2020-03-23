@@ -4,27 +4,25 @@ const User = require('../models/user');
 const router = express.Router();
 const bcryptSalt = 10;
 
-
-
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup', {
-    errorMessage: ''
-  });
+  res.render('auth/signup');
 });
 
 router.post('/signup', (req, res, next) => {
-  const nameInput = req.body.name;
+  const usernameInput = req.body.username;
   const emailInput = req.body.email;
   const passwordInput = req.body.password;
+  const phoneInput = req.body.phoneNumber;
 
-  if (emailInput === '' || passwordInput === '') {
+  if (usernameInput === '' || emailInput === '' || passwordInput === '' || phoneInput === '') {
     res.render('auth/signup', {
-      errorMessage: 'Enter both email and password to sign up.'
+      errorMessage: 'Por favor, introduce nombre, email, contraseña y teléfono.'
     });
     return;
   }
 
   User.findOne({ email: emailInput }, '_id', (err, existingUser) => {
+    
     if (err) {
       next(err);
       return;
@@ -32,18 +30,34 @@ router.post('/signup', (req, res, next) => {
 
     if (existingUser !== null) {
       res.render('auth/signup', {
-        errorMessage: `The email ${emailInput} is already in use.`
+        errorMessage: `El email ${emailInput} ya está usado.`
       });
       return;
     }
+  })  
+
+   User.findOne({ username: usernameInput }, '_id', (err,existingUser) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    if (existingUser !== null) {
+      res.render('auth/signup', {
+        errorMessage: `El username ${usernameInput} ya está usado.`
+      });
+      return;
+    }
+  }) 
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashedPass = bcrypt.hashSync(passwordInput, salt);
 
     const userSubmission = {
-      name: nameInput,
+      username: usernameInput,
       email: emailInput,
-      password: hashedPass
+      password: hashedPass,
+      phoneNumber: phoneInput
     };
 
     const theUser = new User(userSubmission);
@@ -52,6 +66,7 @@ router.post('/signup', (req, res, next) => {
 
     theUser.save(err => {
       if (err) {
+        console.log(err);
         res.render('auth/signup', {
           errorMessage: 'Something went wrong. Try again later.'
         });
@@ -60,13 +75,10 @@ router.post('/signup', (req, res, next) => {
 
       res.redirect('/');
     });
-  });
 });
 
 router.get('/login', (req, res, next) => {
-    res.render('auth/login', {
-      errorMessage: ''
-    });
+    res.render('auth/login');
   });
 
 
@@ -84,7 +96,7 @@ router.post('/login', (req, res, next) => {
     User.findOne({ email: emailInput }, (err, theUser) => {
       if (err || theUser === null) {
         res.render('auth/login', {
-          errorMessage: `There isn't an account with email ${emailInput}.`
+          errorMessage: `There isn't an account for tis email: ${emailInput}.`
         });
         return;
       }
@@ -97,13 +109,13 @@ router.post('/login', (req, res, next) => {
       }
   
       req.session.currentUser = theUser;
-      res.redirect('/');
+      res.redirect('/main');
     });
   });
 
   router.get('/logout', (req, res, next) => {
     if (!req.session.currentUser) {
-      res.redirect('/');
+      res.redirect('/auth/login');
       return;
     }
   
@@ -113,7 +125,7 @@ router.post('/login', (req, res, next) => {
         return;
       }
   
-      res.redirect('/');
+      res.redirect('/auth/login');
     });
   });
 
