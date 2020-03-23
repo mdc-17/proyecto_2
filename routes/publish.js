@@ -13,21 +13,21 @@ router.use((req, res, next) => {
 	res.redirect('/auth/login');
 });
 
-router.get('/', (req, res, next) => {
-	res.render('publish');
+router.get('/publish', (req, res, next) => {
+	res.render('publish/publish');
 });
 
 
 //Falta ver cual es el método de cloudinary para poder subir más de una foto.
 //¿Si se sube de una en una se mete en el array de fotos?
 
-router.post('/', uploadCloud.single('photos'), (req, res, next) => {
+router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 	const { hostRequest, location, address, services } = req.body;
 	const homeImages = req.file.url;
 	const theUser = req.session.currentUser._id;
 
 	if (hostRequest === '' || location === '' || address === '') {
-		res.render('/publish', {
+		res.render('/publish/publish', {
 			errorMessage: 'Todos los campos de petición, localización y dirección deben estar rellenados'
 		});
 		return;
@@ -38,11 +38,16 @@ router.post('/', uploadCloud.single('photos'), (req, res, next) => {
 
   Home.save()
       .then(() => {
-        res.render('/publish', { newHome })
+        res.render('/publish/publish', { newHome })
       })
       .catch((err) => next(err))
       
 
+});
+
+
+router.get('/add', (req, res, next) => {
+	res.render('publish/add');
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
-<form action="/publis" method="post">
+<form action="/publish" method="post" enctype="multipart/form-data">
     <div>
-        <label for="peticion-input"> Usuario </label>
+        <label for="peticion-input"> Peticion usuario </label>
         <input type="text" name="peticion" id="peticion-input">
     </div>
 
@@ -13,18 +13,13 @@
         <label for="address-input">Calle</label>
         <input type="address" name="address" id="address-input" placeholder="Carrer....">
     </div>
-    <input type="file" name="file"> <button> Añadir fotos </button>
-
+    <input type="file" name="file">
     <div>
         <label for="servicios">Servicios Ofrecidos</label>
-        <input type="radio" name="radiox" value="radio1">
-        <input type="radio" name="radiox" value="radio2">
-        <input type="radio" name="radiox" value="radio3">
-        <input type="radio" name="radiox" value="radio4">
-        <input type="radio" name="radiox" value="radio5">
-        <input type="radio" name="radiox" value="radio6">
-        <input type="radio" name="radiox" value="radio7">
-        <input type="radio" name="radiox" value="radio8">
-        <input type="radio" name="radiox" value="radio9">
+        <ul>
+        <li>Aire Acondicionado <input type="checkbox" name="services[]" value="Aire Acondicionado"></li>
+        <li>Wifi <input type="checkbox" name="services[]" value="Wifi"></li>
+        <li>Toallas <input type="checkbox" name="services[]" value="Toallas"></li>
+        </ul>
     </div>
 </form>
