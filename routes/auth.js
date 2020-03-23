@@ -4,8 +4,6 @@ const User = require('../models/user');
 const router = express.Router();
 const bcryptSalt = 10;
 
-
-
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
 });
@@ -68,6 +66,7 @@ router.post('/signup', (req, res, next) => {
 
     theUser.save(err => {
       if (err) {
+        console.log(err);
         res.render('auth/signup', {
           errorMessage: 'Something went wrong. Try again later.'
         });
@@ -84,20 +83,20 @@ router.get('/login', (req, res, next) => {
 
 
 router.post('/login', (req, res, next) => {
-    const usernameInput = req.body.username;
+    const emailInput = req.body.email;
     const passwordInput = req.body.password;
   
-    if (usernameInput === '' || passwordInput === '') {
+    if (emailInput === '' || passwordInput === '') {
       res.render('auth/login', {
         errorMessage: 'Enter both email and password to log in.'
       });
       return;
     }
   
-    User.findOne({ username: usernameInput }, (err, theUser) => {
+    User.findOne({ email: emailInput }, (err, theUser) => {
       if (err || theUser === null) {
         res.render('auth/login', {
-          errorMessage: `There isn't an account for user: ${usernameInput}.`
+          errorMessage: `There isn't an account for tis email: ${emailInput}.`
         });
         return;
       }

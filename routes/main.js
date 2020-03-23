@@ -13,14 +13,8 @@ router.use((req, res, next) => {
   });
 
 
-router.get('/main', (req,res,next) => {
+router.get('/', (req,res,next) => {
     res.render('main')
 });
 
-
-
-
-  
-
-  
   module.exports = router;
