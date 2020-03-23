@@ -1,0 +1,9 @@
+{{#each users}}
+<img src="{{this}}">
+
+{{username}} 
+{{email}}
+{{phoneNumber}}
+
+<a href="/profile/edit?user_id={{this._id}}" class="edit-button">EDIT</a>
+{{/each}}
