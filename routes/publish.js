@@ -14,7 +14,12 @@ router.use((req, res, next) => {
 });
 
 router.get('/publish', (req, res, next) => {
-	res.render('publish/publish');
+Home.find()
+	.then((homes) => {
+		console.log(homes);
+		res.render('publish/publish', { homes })
+	})
+	.catch((err) => next(err))
 });
 
 
@@ -27,7 +32,7 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 	const theUser = req.session.currentUser._id;
 
 	if (hostRequest === '' || location === '' || address === '') {
-		res.render('/publish/publish', {
+		res.render('publish/publish', {
 			errorMessage: 'Todos los campos de petición, localización y dirección deben estar rellenados'
 		});
 		return;
@@ -36,9 +41,9 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
   const homeSubmission = { host: theUser, hostRequest, location, address, homeImages, services };
   const newHome = new Home (homeSubmission);
 
-  Home.save()
+  newHome.save()
       .then(() => {
-        res.render('/publish/publish', { newHome })
+        res.render('publish/publish', { newHome })
       })
       .catch((err) => next(err))
       
