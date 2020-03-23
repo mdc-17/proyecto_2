@@ -13,9 +13,14 @@ router.use((req, res, next) => {
   });
 
 
-  router.get('/', (req,res,next) => {
-    res.render('housing')
-});
+  router.get('/housing', (req, res, next) => {
+    Home.find()
+      .then((homes) => {
+        console.log(homes);
+        res.render('housing/housing', { homes })
+      })
+      .catch((err) => next(err))
+    });
 
 
 
