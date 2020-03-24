@@ -25,7 +25,7 @@ router.use((req, res, next) => {
 
     router.post('/housing', (req,res,next) => {
     const { locationQuery } = req.body    
-        Home.find( {$and: [ { location: locationQuery }, {guest: null} ] } )
+        Home.find( {$and: [ { location: locationQuery }, {guest: null}, {host: {$ne: req.session.currentUser}} ] } )
             .then(homesLocation => {
                 res.render('housing/housing', { homesLocation})
             })
@@ -42,7 +42,5 @@ router.use((req, res, next) => {
       });
 
     
-
-
 
 module.exports = router;

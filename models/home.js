@@ -8,6 +8,7 @@ const homeSchema = new Schema({
 	location: String,
 	address: String,
 	homeImages: [ { type: String } ],
+	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
 	services: [ { type: String } ]
 
 	/* HE LEIDO QUE LOS CHECKBOX SE PUEDEN GESTIONAR COMO ARRAYS:

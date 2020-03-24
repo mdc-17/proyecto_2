@@ -23,10 +23,9 @@ router.use((req, res, next) => {
 
   router.post('/booking/:id', (req,res,next) => {
     const { id } = req.params;
-        Home.findOneAndUpdate( { _id: id }, {guest: req.session.currentUser})
-            .then(mybookings => {
-              console.log("nueva", mybookings);
-                res.redirect('/bookings/booking',  mybookings )
+        Home.findOneAndUpdate( { _id: id }, {guest: req.session.currentUser, statusRequest: 'Pendiente'})
+            .then(() => {
+                res.redirect('/bookings/booking' )
             })
             .catch((err) => next(err))
     })

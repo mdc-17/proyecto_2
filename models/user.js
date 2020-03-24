@@ -23,8 +23,7 @@ const userSchema = new Schema({
 	isHost: { type: Boolean, default: false },
 	isGuest: { type: Boolean, default: true },
 	requests: [ { type: String } ],
-	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
-	phoneNumber: {type: Number, required: true},
+	phoneNumber: {type: Number, required: true}
 	
 });
 
