@@ -12,6 +12,12 @@ router.use((req, res, next) => {
     res.redirect('/auth/login');
   });
 
+  router.get('/', (req,res,next) => {
+    res.render('publish/publish');
+  })
+
+
+  
 
 
 

@@ -9,15 +9,13 @@ router.use((req, res, next) => {
 		next();
 		return;
 	}
-
 	res.redirect('/auth/login');
 });
 
 router.get('/publish', (req, res, next) => {
-Home.find()
-	.then((homes) => {
-		console.log(homes);
-		res.render('publish/publish', { homes })
+Home.find({ host: req.session.currentUser._id })
+	.then((homes) => {		
+		res.render('publish/publish', { homes })	
 	})
 	.catch((err) => next(err))
 });
@@ -29,7 +27,7 @@ Home.find()
 router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 	const { hostRequest, location, address, services } = req.body;
 	const homeImages = req.file.url;
-	const theUser = req.session.currentUser._id;
+	const theUserID = req.session.currentUser._id;
 
 	if (hostRequest === '' || location === '' || address === '') {
 		res.render('publish/publish', {
@@ -38,14 +36,20 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 		return;
 	}
 
-  const homeSubmission = { host: theUser, hostRequest, location, address, homeImages, services };
+  const homeSubmission = { host: theUserID, hostRequest, location, address, homeImages, services };
   const newHome = new Home (homeSubmission);
 
+ User.findOneAndUpdate({_id: theUserID}, {isHost:true})
+	 .then()
+	 .catch((err) => next(err))	
+   	
   newHome.save()
       .then(() => {
-        res.render('publish/publish', { newHome })
+        res.redirect('/publish/publish')
       })
-      .catch((err) => next(err))
+	  .catch((err) => next(err))
+	  
+	
       
 
 });

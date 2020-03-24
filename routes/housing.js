@@ -23,5 +23,19 @@ router.use((req, res, next) => {
     });
 
 
+    router.post('/housing', (req,res,next) => {
+    const { locationQuery } = req.body    
+        Home.find( { location: locationQuery })
+            .then(homesLocation => {
+                res.render('housing/housing', { homesLocation})
+            })
+            .catch((err) => next(err))
+    })
+
+
+
+
+
+
 
 module.exports = router;
