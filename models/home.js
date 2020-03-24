@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const homeSchema = new Schema({
 	host: { type: Schema.Types.ObjectId, ref: 'User' },
-	guest: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
+	guest: { type: Schema.Types.ObjectId, ref: 'User' },
 	hostRequest: String,
 	location: String,
 	address: String,

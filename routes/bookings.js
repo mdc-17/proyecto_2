@@ -12,13 +12,24 @@ router.use((req, res, next) => {
     res.redirect('/auth/login');
   });
 
-  router.get('/', (req,res,next) => {
-    res.render('publish/publish');
+  router.get('/booking', (req,res,next) => {
+    Home.find({ guest: req.session.currentUser})
+    .then((mybookings) => {
+      console.log(mybookings);
+    res.render('booking/booking', { mybookings } )
   })
+    .catch((err) => next(err))
+})
 
-
+  router.post('/booking/:id', (req,res,next) => {
+    const { id } = req.params;
+        Home.findOneAndUpdate( { _id: id }, {guest: req.session.currentUser})
+            .then(mybookings => {
+              console.log("nueva", mybookings);
+                res.redirect('/bookings/booking',  mybookings )
+            })
+            .catch((err) => next(err))
+    })
   
-
-
 
 module.exports = router;
