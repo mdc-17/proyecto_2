@@ -40,6 +40,7 @@ router.get('/denegar/:id', (req, res, next) => {
 	Home.findOneAndUpdate({_id: id},  {statusRequest: '', $unset: {guest: 1}}, {new: true})
 		.then(() => {
 			Home.find({ host: req.session.currentUser._id })
+				.populate('guest')
 				.then((homes) => {	
 				res.render('publish/publish', { homes })	
 			})
