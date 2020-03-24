@@ -7,12 +7,18 @@
 {{/each}}
 <p>{{location}}</p>
 <p>{{address}}</p>
+<p>{{statusRequest}}</p>
 <ul>
 {{#each services}}
 
 <li>{{this}}</li>
 
 {{/each}}
-
 </ul>
+<a href="/publish/add">Desplegable info user</a>
+
+<p>{{guest.username}}</p>
+<p>{{guest.phoneNumber}}</p>
+<a href="/publish/aceptar/{{_id}}">Aceptar</a> <a href="/publish/denegar/{{_id}}">Denegar</a>
+
 {{/each}} 

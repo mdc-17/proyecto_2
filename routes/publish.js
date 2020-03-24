@@ -14,8 +14,36 @@ router.use((req, res, next) => {
 
 router.get('/publish', (req, res, next) => {
 Home.find({ host: req.session.currentUser._id })
-	.then((homes) => {		
+.populate('guest')
+	.then((homes) => {	
 		res.render('publish/publish', { homes })	
+	})
+	.catch((err) => next(err))
+});
+
+router.get('/aceptar/:id', (req, res, next) => {
+	const { id } = req.params;
+	Home.findOneAndUpdate({_id: id}, {statusRequest: 'Aceptado'})
+		.then(() => {
+			Home.find({ host: req.session.currentUser._id })
+				.populate('guest')
+				.then((homes) => {	
+				res.render('publish/publish', { homes })	
+			})
+			.catch((err) => next(err))	
+	})
+	.catch((err) => next(err))
+});
+
+router.get('/denegar/:id', (req, res, next) => {
+	const { id } = req.params;
+	Home.findOneAndUpdate({_id: id},  {statusRequest: '', $unset: {guest: 1}}, {new: true})
+		.then(() => {
+			Home.find({ host: req.session.currentUser._id })
+				.then((homes) => {	
+				res.render('publish/publish', { homes })	
+			})
+			.catch((err) => next(err))	
 	})
 	.catch((err) => next(err))
 });
@@ -48,9 +76,7 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
         res.redirect('/publish/publish')
       })
 	  .catch((err) => next(err))
-	  
-	
-      
+
 
 });
 
@@ -58,5 +84,7 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 router.get('/add', (req, res, next) => {
 	res.render('publish/add');
 });
+
+
 
 module.exports = router;
