@@ -25,16 +25,23 @@ router.use((req, res, next) => {
 
     router.post('/housing', (req,res,next) => {
     const { locationQuery } = req.body    
-        Home.find( { location: locationQuery })
+        Home.find( {$and: [ { location: locationQuery }, {guest: null} ] } )
             .then(homesLocation => {
                 res.render('housing/housing', { homesLocation})
             })
             .catch((err) => next(err))
     })
 
+    router.get('/view', (req, res, next) => {
+      Home.findOne({_id: req.query.home_id})
+        .then((home) => {
+          console.log(home);
+          res.render('housing/view', { home })
+        })
+        .catch((err) => next(err))
+      });
 
-
-
+    
 
 
 
