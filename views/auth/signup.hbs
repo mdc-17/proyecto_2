@@ -1,4 +1,5 @@
-<h2> Sign Up </h2>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="../scripts/script.js"></script>
 
 {{#if errorMessage}}
 <p class="error-message">
@@ -6,33 +7,38 @@
 </p>
 {{/if}}
 
+<div id="formWrapper">
+
+<div id="form">
+<div class="logo">
+<g>
+<h1 class="hellou">Hellou!</h1>	
+</g>
+</div>
 <form action="/auth/signup" method="post">
-    <div>
-        <label for="username-input"> Nombre de usuario </label>
-        <input type="text" name="username" id="username-input" placeholder="e.g., Victor Ronda">
+    <div class="form-item">
+        <p class="formLabel">Usuario</p>
+        <input type="text" name="username" id="username-input" class="form-style">
     </div>
 
-    <div>
-        <label for="email-input"> Email </label>
-        <input type="email" name="email" id="email-input" placeholder="e.g., victor@ronda.com">
+    <div class="form-item">
+        <p class="formLabel">Correo Electrónico</p>
+        <input type="email" name="email" id="email-input" class="form-style">
     </div>
 
-    <div>
-        <label for="password-input"> Password </label>
-        <input type="password" name="password" id="password-input" placeholder="e.g., ••••••••">
+    <div class="form-item">
+        <p class="formLabel">Contraseña</p>
+        <input type="password" name="password" id="password-input" class="form-style" >
     </div>
 
-     <div>
-        <label for="telefono-input"> Telefono </label>
-        <input type="tel" name="phoneNumber" id="telefono-input" placeholder="e.g., ••••••••••••">
+     <div class="form-item">
+        <p class="formLabel">Teléfono</p>
+        <input type="tel" name="phoneNumber" id="telefono-input" class="form-style">
     </div>
 
-    <button> Create New Account </button>
+    <div class="form-item">
+        <input type="submit" class="login pull-right" value="Registrate">
+		<div class="clear-fix"></div>
+	</div>
 </form>
 
-<p>
-    Already have an account?
-    <a href="/auth/login">
-        Log in.
-    </a>
-</p>
