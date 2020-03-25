@@ -15,11 +15,19 @@ router.use((req, res, next) => {
   router.get('/booking', (req,res,next) => {
     Home.find({ guest: req.session.currentUser})
     .then((mybookings) => {
-      console.log(mybookings);
     res.render('booking/booking', { mybookings } )
   })
     .catch((err) => next(err))
 })
+
+router.get('/cancelar/:id', (req, res, next) => {
+	const { id } = req.params;
+	Home.findOneAndUpdate({_id: id},  {statusRequest: '', $unset: {guest: 1}}, {new: true})
+		.then(() => {	
+    res.redirect('/bookings/booking')
+})
+	.catch((err) => next(err))
+});
 
   router.post('/booking/:id', (req,res,next) => {
     const { id } = req.params;

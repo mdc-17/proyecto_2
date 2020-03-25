@@ -7,7 +7,12 @@
 <p>{{hostRequest}}</p>
 <p>{{address}} {{location}}</p>
 <p>{{statusRequest}}</p>
-
+<ul>
+{{#each services}}
+<li>{{this}}</li>
+{{/each}}
+</ul>
+<a href="/bookings/cancelar/{{_id}}">Cancelar reserva</a>
 {{/each}}
 
 
