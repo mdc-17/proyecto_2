@@ -1,5 +1,12 @@
-
-{{!-- DE MOMENTO SIN FOTO<img src="{{currentUser}}"> --}}
+{{#if user.photo_user}}
+<img src="{{user.photo_user}}"/>
+{{else}}
+<div class="image-upload">
+  <label for="file-input">
+    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+  </label>
+</div>
+{{/if}}
 
 {{user.username}} 
 {{user.email}}

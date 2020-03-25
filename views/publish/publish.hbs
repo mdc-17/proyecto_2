@@ -15,10 +15,31 @@
 
 {{/each}}
 </ul>
-<a href="/publish/add">Desplegable info user</a>
 
+{{#if guest}}
 <p>{{guest.username}}</p>
 <p>{{guest.phoneNumber}}</p>
-<a href="/publish/aceptar/{{_id}}">Aceptar</a> <a href="/publish/denegar/{{_id}}">Denegar</a>
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Aceptar</a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Denegar</button>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        ¿Está usted seguro de qué quiere aceptar esta reserva? Cuando acepte se remitirá a los términos de uso de la aplicación. <a href="/publish/aceptar/{{_id}}">Aceptar</a> 
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        ¿Está usted seguro de qué quiere cancelar esta reserva? Cuando cancele se eliminará la petición del usuario. <a href="/publish/denegar/{{_id}}">Denegar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/if}}
 
 {{/each}} 
