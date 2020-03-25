@@ -1,4 +1,4 @@
-<form action="/profile/edit?user_id={{user._id}}" method="post">
+<form action="/profile/edit?user_id={{user._id}}" method="post" enctype="multipart/form-data">
     <label for="">Nombre de usuario</label>
     <input type="text" name="username" value="{{user.username}}">
 
@@ -9,7 +9,7 @@
     <input type="text" name="phoneNumber" value="{{user.phoneNumber}}">
 
     <label for="">Foto:</label>
-    <input type="file" name="photo_user">
+    <input type="file" name="photoUser">
 
     <button type="submit">EDIT</button>
 </form>

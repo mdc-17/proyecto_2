@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const uploadCloud = require('../config/cloudinary.js');
+
 
 router.use((req, res, next) => {
     if (req.session.currentUser) {
@@ -30,16 +32,21 @@ router.use((req, res, next) => {
         })
       });
 
-      router.post('/edit', (req, res, next) => {
-        const {username, email, phoneNumber, photo_user }=req.body;
-        User.findOneAndUpdate({_id: req.query.user_id},{$set: {username, email, phoneNumber, photo_user }},{new:true})
+      router.post('/edit', uploadCloud.single('photoUser'), (req, res, next) => {
+        let actuallyUser;
+        User.findOne({_id: req.session.currentUser._id})
+        .then((user) => {
+          actuallyUser = user;
+          const {username, email, phoneNumber } = req.body;
+          const photo_user = req.file ? req.file.secure_url : actuallyUser.photo_user;
+          User.findOneAndUpdate({_id: req.query.user_id},{$set: {username, email, phoneNumber, photo_user}},{new:true})
             .then(() =>
             res.redirect('/profile/profile'))
             .catch((err) => next(err));
+        })
+        .catch((error) => {
+          console.log(error);
+        }) 
       });
-
-
-   
-      
 
   module.exports = router;

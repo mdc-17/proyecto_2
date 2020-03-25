@@ -19,12 +19,11 @@ const userSchema = new Schema({
 		required: true,
 		//match: [ /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/g, 'is invalid' ]
 	},
-	photo_user: String,
+	photo_user:  { type: String },
 	isHost: { type: Boolean, default: false },
 	isGuest: { type: Boolean, default: true },
 	requests: [ { type: String } ],
-	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
-	phoneNumber: {type: Number, required: true},
+	phoneNumber: {type: Number, required: true}
 	
 });
 
