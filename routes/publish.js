@@ -49,6 +49,15 @@ router.get('/denegar/:id', (req, res, next) => {
 	.catch((err) => next(err))
 });
 
+router.get('/eliminar/:id', (req, res, next) => {
+	const { id } = req.params;
+	Home.findOneAndDelete({_id: id})
+		.then(() => {
+				res.redirect('/publish/publish')		
+	})
+	.catch((err) => next(err))
+});
+
 
 //Falta ver cual es el método de cloudinary para poder subir más de una foto.
 //¿Si se sube de una en una se mete en el array de fotos?
