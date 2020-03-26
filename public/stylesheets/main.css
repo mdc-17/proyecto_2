@@ -63,7 +63,7 @@ body{
 .wrapper{
 	min-width: 600px;
 	max-width: 900px;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 .row {
@@ -76,7 +76,8 @@ body{
 	table-layout: fixed;
 	width: 100%;
 	-webkit-transform: translateY(5px);
-    transform: translateY(5px);
+	transform: translateY(5px);
+	
   
 }
 .tabs	> li {
@@ -119,6 +120,7 @@ body{
 				background-color: #aaddff;
 				-webkit-transform: translateY(0);
 				transform: translateY(0);
+				
 }
 
 .content__wrapper {
@@ -133,6 +135,9 @@ body{
 	position: relative;
 	width: 100%;
 	border-radius: 5px;
+	-webkit-box-shadow: 31px 121px 84px -9px rgba(0,0,0,0.67);
+	-moz-box-shadow: 31px 121px 84px -9px rgba(0,0,0,0.67);
+	box-shadow: 31px 121px 84px -9px rgba(0,0,0,0.67);
 }	
 .tab__content>li{
 		width: 100%;
@@ -147,7 +152,8 @@ body{
 			border-radius: 5px;
 			width: 100%;
 			padding: 45px 40px 40px 40px;
-            background-color: white;
+			background-color: white;
+			
 }
 
 .content__wrapper>h1{
