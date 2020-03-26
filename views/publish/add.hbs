@@ -4,8 +4,13 @@
 
         <form action="/publish/publish" method="post" enctype="multipart/form-data">
     <div>
-        <label class="card-text" for="peticion-input"><b>Petición usuario:</b>  </label><br>
+        <label class="card-text" for="peticion-input"><b>Petición del usuario:</b>  </label><br>
         <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px" type="text" name="hostRequest" id="peticion-input">
+    </div>
+
+    <div>
+        <label class="card-text" for="peticionDetalles-input"><b>Descripción de la petición:</b>  </label><br>
+        <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px" type="text" name="hostRequestDetail" id="peticionDetalles-input">
     </div>
 
     <div>
@@ -18,7 +23,13 @@
         <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px;" type="address" name="address" id="address-input" placeholder="Carrer....">
     </div>
     <label class="card-text mt-2" for="photos"><b>Foto:</b> <br><span class="d-block btn-photo mt-1 p-2 w-100">Selecciona la foto de tu casa</span> </label>
-    <input id="photos" style="display:none" type="file" name="photos">
+    <input id="photos" style="display:none" type="file" name="photos" required>
+    
+    <div>
+    <label class="card-text mt-2" for="description-input"><b>Descripción:</b>  </label><br>
+    <textarea name="description" for="description-input" type="text" id="description-input" rows="10" cols="88">Escribe aquí una pequeña descripción</textarea>
+    </div>
+    
     <div>
         <label class="card-text mt-2" for="servicios"><b>Servicios Ofrecidos</b></label>
         <ul>

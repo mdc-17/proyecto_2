@@ -5,9 +5,11 @@ const homeSchema = new Schema({
 	host: { type: Schema.Types.ObjectId, ref: 'User' },
 	guest: { type: Schema.Types.ObjectId, ref: 'User' },
 	hostRequest: String,
+	hostRequestDetail: String,
 	location: String,
 	address: String,
-	homeImages: [ { type: String } ],
+	description: String,
+	homeImages: [ { type: String, require: true } ],
 	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
 	services: [ { type: String } ],
 	requestAccepted: { type: Boolean, default: false }
