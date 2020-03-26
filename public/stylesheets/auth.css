@@ -112,3 +112,24 @@ input[type="submit"].login{
 }
 input[type="submit"].login:hover{background-color: #fff; border:1px solid #55b1df; color:#55b1df; cursor:pointer;}
 input[type="submit"].login:focus{outline: none;}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+	div#form{
+		position: absolute;
+		width:360px;
+		height:320px;
+		height:auto;
+		background-color: #fff;
+		margin:auto;
+		border-radius: 5px;
+		padding:20px;
+		left:50%;
+		top:50%;
+		margin-left:-180px;
+		margin-top:-200px;
+	}
+
+}
