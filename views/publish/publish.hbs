@@ -1,20 +1,29 @@
-<a href="/publish/add">Añadir</a>
+<div class="mt-3 text-center mx-auto">
+<a class="btn btn-lg w-25 ml-auto btn-success mb-4" href="/publish/add">Añadir</a>
+</div>
+<div class="d-flex justify-content-center w-100 mx-auto">
+<div class="card" style="width: 40rem;">
 
 {{#each homes}}
-<h2>{{hostRequest}}</h2><a href="/publish/eliminar/{{_id}}">Eliminar</a>
+<h2 class="card-title mx-auto">{{hostRequest}}</h2>
+
 {{#each homeImages}}
-<img src="{{this}}">
+<img class="card-img-top" src="{{this}}">
 {{/each}}
-<p>{{location}}</p>
-<p>{{address}}</p>
-<p>{{statusRequest}}</p>
+
+
+<p class="card-text">{{location}}</p>
+<p class="card-text">{{address}}</p>
+<p class="card-text">{{statusRequest}}</p>
 <ul>
 {{#each services}}
 
-<li>{{this}}</li>
+<li class="card-text">{{this}}</li>
 
 {{/each}}
 </ul>
+<a class="btn btn-danger w-25 mx-auto" href="/publish/eliminar/{{_id}}">Eliminar</a>
+
 
 {{#if guest}}
 <p>{{guest.username}}</p>
@@ -43,3 +52,10 @@
 {{/if}}
 
 {{/each}} 
+
+
+
+
+
+</div>
+</div>
