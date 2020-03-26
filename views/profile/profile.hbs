@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center w-100 mx-auto">
+<div class="card" style="width: 18rem;">
+{{#if user.photo_user}}
+<img class="card-img-top p-2 rounded-circle" src="{{user.photo_user}}"/>
+{{else}}
+<div class="image-upload">
+  <label for="file-input">
+    <img class="card-img-top p-2 rounded-circle" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+  </label>
+</div>
+{{/if}}
+<div class="card-body">
+<p class="card-text" style="font-size: 12px; color: #55b1df;"><b>Nombre: </b></p>
+<p class="w-100 p-1 profile-text">{{user.username}}</p>
+<p class="card-text" style="font-size: 12px; color: #55b1df;"><b>Correo electrónico: </b></p>
+<p class="w-100 p-1 profile-text">{{user.email}}</p>
+<p class="card-text" style="font-size: 12px; color: #55b1df;"><b>Teléfono: </b></p>
+<p class="w-100 p-1 profile-text">{{user.phoneNumber}}</p>
+<a href="/profile/edit?user_id={{user._id}}" type="submit" class="login pull-right">EDIT</a>
+</div>
+</div>
+</div>
