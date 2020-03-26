@@ -1,3 +1,14 @@
+ .avatar-img {
+	margin: 30px auto 10px;
+	width: 180px;
+	height: 180px;
+	background-size: cover;
+	border-radius: 50%;
+	border: 1px border black;
+}
+	/* remove extra space below image */
+
+
 a[type="submit"].login{
     margin-right: 70px;
 	width: 112px;
