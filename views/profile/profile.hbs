@@ -1,12 +1,14 @@
 <div class="d-flex justify-content-center w-100 mx-auto">
 <div class="card" style="width: 18rem;">
 {{#if user.photo_user}}
-<img class="card-img-top p-2 rounded-circle" src="{{user.photo_user}}"/>
+<div class="avatar-img" style="background: url({{user.photo_user}}); background-size: cover;">
+
+</div>
 {{else}}
 <div class="image-upload">
-  <label for="file-input">
-    <img class="card-img-top p-2 rounded-circle" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
-  </label>
+  
+<div class="avatar-img" style="background: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'); background-size: cover;"/></div>
+  
 </div>
 {{/if}}
 <div class="card-body">
