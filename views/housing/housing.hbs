@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto">
-
+{{#if homesLocation}}
 <h1 class="mx-auto mt-3">Hemos encontrado las siguientes casas en {{homesLocation.0.location}}</h1>
 
 {{#each homesLocation}}
@@ -18,6 +18,11 @@
 </div>
 </div>
 {{/each}} 
+{{else}}
+<h1 class="mx-auto mt-3">No hay casas disponibles.</h1>
+
+
+{{/if}}
 
 
 </div>

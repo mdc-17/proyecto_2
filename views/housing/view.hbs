@@ -10,8 +10,10 @@
 {{/each}}
 
 <div class="card-body">
+<p class="card-text"><b>Detalles de la petición:</b> {{home.hostRequestDetail}}</p>
 <p class="card-text"><b>Localización:</b> {{home.location}}</p>
 <p class="card-text"><b>Dirección: </b>{{home.address}}</p>
+<p class="card-text"><b>Descripción: </b>{{home.description}}</p>
 <b>Servicios incluidos:</b>
 <ul>
 {{#each home.services}}

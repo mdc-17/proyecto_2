@@ -15,6 +15,7 @@
 
 <div class="card-body">
 <p class="card-text mt-2"><b>Prestación: </b>{{hostRequest}}</p>
+<p class="card-text"><b>Detalles de prestación: </b>{{hostRequestDetail}}</p>
 <p class="card-text"><b>Dirección: </b>{{address}} {{location}}</p>
 <p class="card-text"><b>Estado de la reserva: </b>{{statusRequest}}</p>
 <b>Servicios incluidos:</b>
@@ -24,7 +25,7 @@
 {{/each}}
 </ul>
 <div class="w-100 text-center mx-auto">
-<a class="btn btn-lg btn-danger w-100" href="/bookings/cancelar/{{_id}}">Cancelar reserva</a>
+<a class="btn btn-lg btn-danger w-50" href="/bookings/cancelar/{{_id}}">Cancelar reserva</a>
 </div>
 
 </div>

@@ -1,0 +1,36 @@
+.flash {
+    display: flex;
+    justify-content: center;
+    -webkit-animation-name: flash;
+    animation-name: flash;
+    animation-duration: 5s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    color: red
+}
+
+@-webkit-keyframes flash {
+    from,
+    50%,
+    to {
+      opacity: 1;
+    }
+  
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flash {
+    from,
+    50%,
+    to {
+      opacity: 1;
+    }
+  
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }

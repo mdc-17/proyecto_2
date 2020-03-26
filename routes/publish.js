@@ -58,7 +58,7 @@ router.get('/eliminar/:id', (req, res, next) => {
 //¿Si se sube de una en una se mete en el array de fotos?
 
 router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
-	const { hostRequest, location, address, services } = req.body;
+	const { hostRequest, location, address, services, hostRequestDetail, description } = req.body;
 	const homeImages = req.file.url;
 	const theUserID = req.session.currentUser._id;
 
@@ -69,7 +69,7 @@ router.post('/publish', uploadCloud.single('photos'), (req, res, next) => {
 		return;
 	}
 
-  const homeSubmission = { host: theUserID, hostRequest, location, address, homeImages, services };
+  const homeSubmission = { host: theUserID, hostRequest, location, address, homeImages, services, hostRequestDetail, description };
   const newHome = new Home (homeSubmission);
 
  User.findOneAndUpdate({_id: theUserID}, {isHost:true})

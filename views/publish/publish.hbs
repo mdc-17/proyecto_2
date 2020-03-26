@@ -18,7 +18,8 @@
 {{/each}}
 
 <div class="card-body"> 
-<p class="card-text mt-3"><b>Ciudad: </b>{{location}}</p>
+<p class="card-text mt-3"><b>Descripción de la petición: </b>{{hostRequestDetail}}</p> 
+<p class="card-text"><b>Ciudad: </b>{{location}}</p>
 <p class="card-text"><b>Dirección:</b> {{address}}</p>
 <p class="card-text"><b>Estado:</b> {{statusRequest}}</p>
 <b>Servicios incluidos:</b>
@@ -37,15 +38,17 @@
 {{#if guest}}
 <h3>Gestión de reservas</h3>
 {{#unless requestAccepted}}
-<h4>¡Tiene usted una petición de reserva!</h4>
+<h4 class="flash">¡Tiene usted una petición de reserva!</h4>
 {{/unless}}
 <p>Nombre: {{guest.username}}</p>
 <p>Número de teléfono: {{guest.phoneNumber}}</p>
 <p>
   {{#unless requestAccepted}}
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Aceptar</a>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="
+    background: green; border-color: green;">Aceptar</a>
   {{/unless}}
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Denegar</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" style="background-color: #dc3545;
+    border-color: #dc3545;">Denegar</button>
 </p>
 <div class="row">
   <div class="col">
