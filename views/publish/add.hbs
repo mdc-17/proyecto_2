@@ -1,21 +1,26 @@
-<form action="/publish/publish" method="post" enctype="multipart/form-data">
+<div class="d-flex justify-content-center mx-auto w-50">
+    <div class="card p-3 m-2" style="width: 50rem;">
+        <div class="card-body">
+
+        <form action="/publish/publish" method="post" enctype="multipart/form-data">
     <div>
-        <label for="peticion-input"> Peticion usuario </label>
-        <input type="text" name="hostRequest" id="peticion-input">
+        <label class="card-text" for="peticion-input"><b>Petición usuario:</b>  </label><br>
+        <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px" type="text" name="hostRequest" id="peticion-input">
     </div>
 
     <div>
-        <label for="localizacion-input"> Localizacion </label>
-        <input type="localizacion" name="location" id="localizacion-input">
+        <label class="card-text mt-2" for="localizacion-input"><b>Localización:</b> </label><br>
+        <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px" type="localizacion" name="location" id="localizacion-input">
     </div>
 
     <div>
-        <label for="address-input">Calle</label>
-        <input type="address" name="address" id="address-input" placeholder="Carrer....">
+        <label class="card-text mt-2" for="address-input"><b>Calle:</b>  </label><br>
+        <input class="w-100" style="border:1px solid #55b1df;border-radius: 20px;" type="address" name="address" id="address-input" placeholder="Carrer....">
     </div>
-    <input type="file" name="photos">
+    <label class="card-text mt-2" for="photos"><b>Foto:</b> <br><span class="d-block btn-photo mt-1 p-2 w-100">Selecciona la foto de tu casa</span> </label>
+    <input id="photos" style="display:none" type="file" name="photos">
     <div>
-        <label for="servicios">Servicios Ofrecidos</label>
+        <label class="card-text mt-2" for="servicios"><b>Servicios Ofrecidos</b></label>
         <ul>
         <li>Aire Acondicionado <input type="checkbox" name="services[]" value="Aire Acondicionado"></li>
         <li>Wifi <input type="checkbox" name="services[]" value="Wifi"></li>
@@ -26,6 +31,9 @@
         <li>Plancha <input type="checkbox" name="services[]" value="Plancha"></li>
         <li>TV <input type="checkbox" name="services[]" value="TV"></li>
         </ul>
+        </div>
+        <button class="btn btn-lg w-100" style="color: white; background-color: #55b1df; border:1px border #3da0d1;" type="submit">Añadir</button>
+    </form>
     </div>
-    <button type="submit">Añadir</button>
-</form>
+    </div>   
+</div>

@@ -31,7 +31,7 @@ router.get('/cancelar/:id', (req, res, next) => {
 
   router.post('/booking/:id', (req,res,next) => {
     const { id } = req.params;
-        Home.findOneAndUpdate( { _id: id }, {guest: req.session.currentUser, statusRequest: 'Pendiente'})
+        Home.findOneAndUpdate( { _id: id }, {$set: {guest: req.session.currentUser, statusRequest: 'Pendiente'}})
             .then(() => {
                 res.redirect('/bookings/booking' )
             })

@@ -9,7 +9,8 @@ const homeSchema = new Schema({
 	address: String,
 	homeImages: [ { type: String } ],
 	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
-	services: [ { type: String } ]
+	services: [ { type: String } ],
+	requestAccepted: { type: Boolean, default: false }
 
 	/* HE LEIDO QUE LOS CHECKBOX SE PUEDEN GESTIONAR COMO ARRAYS:
 	https://dev.niamurrell.com/reference/2019-01-31-checkboxes-in-forms-with-body-parser/

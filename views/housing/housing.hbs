@@ -1,13 +1,23 @@
+<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto">
+
+<h1 class="mx-auto mt-3">Hemos encontrado las siguientes casas en {{homesLocation.0.location}}</h1>
 
 {{#each homesLocation}}
 
-<h1></h1>
+
+<div class="card p-3 m-2" style="width: 50rem;">
 
 {{#each homeImages}}
-<img src="{{this}}">
+<img class="card-img-top" src="{{this}}">
 {{/each}}
-<p>{{hostRequest}}</p>
-<p>{{address}}</p>
-<a href="/housing/view?home_id={{_id}}">Ver mas detalles</a>
 
+<div class="card-body">
+<p class="card-text" style="font-size: 24px;"><b>Petición del anfitrión: </b>{{hostRequest}}</p>
+<p class="card-text"style="font-size: 24px;"><b>Dirección: </b>{{address}}</p>
+<a class="btn btn-md btn-info w-100" href="/housing/view?home_id={{_id}}">Ver mas detalles</a>
+</div>
+</div>
 {{/each}} 
+
+
+</div>
