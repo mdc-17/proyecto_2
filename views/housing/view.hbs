@@ -1,18 +1,28 @@
-<h2>{{home.hostRequest}}</h2>
+<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto">
+
+
+    <div class="card p-3 m-2" style="width: 50rem;">
+
+        <h2 class="card-title mx-auto"><b>Petición del infitrión: </b>{{home.hostRequest}}</h2>
 
 {{#each home.homeImages}}
-<img src="{{this}}">
+        <img src="{{this}}">
 {{/each}}
 
-<p>{{home.location}}</p>
-<p>{{home.address}}</p>
-
+<div class="card-body">
+<p class="card-text"><b>Localización:</b> {{home.location}}</p>
+<p class="card-text"><b>Dirección: </b>{{home.address}}</p>
+<b>Servicios incluidos:</b>
 <ul>
 {{#each home.services}}
-<li>{{this}}</li>
+<li class="card-text">{{this}}</li>
 {{/each}}
 </ul>
 
 <form action="/bookings/booking/{{home._id}}" method="post">
-<button type="submit">Solicitar reserva</button>
+<button class="btn btn-md btn-info w-100"type="submit">Solicitar reserva</button>
 </form>
+
+        </div>
+    </div>
+</div>
