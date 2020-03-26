@@ -1,18 +1,34 @@
-<h1>TUS RESERVAS</h1>
+
+<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto">
+
+
+
+<h1 class="card-title mx-auto">TUS RESERVAS</h1>
 {{#each mybookings}}
 
+<div class="card p-3 m-2" style="width: 50rem;">
+
+
 {{#each homeImages}}
-<img src="{{this}}">
+<img class="card-img-top mx-auto" src="{{this}}">
 {{/each}}
-<p>{{hostRequest}}</p>
-<p>{{address}} {{location}}</p>
-<p>{{statusRequest}}</p>
+
+<div class="card-body">
+<p class="card-text mt-2"><b>Prestación: </b>{{hostRequest}}</p>
+<p class="card-text"><b>Dirección: </b>{{address}} {{location}}</p>
+<p class="card-text"><b>Estado de la reserva: </b>{{statusRequest}}</p>
+<b>Servicios incluidos:</b>
 <ul>
 {{#each services}}
-<li>{{this}}</li>
+<li class="card-text">{{this}}</li>
 {{/each}}
 </ul>
-<a href="/bookings/cancelar/{{_id}}">Cancelar reserva</a>
+<div class="w-100 text-center mx-auto">
+<a class="btn btn-lg btn-danger w-100" href="/bookings/cancelar/{{_id}}">Cancelar reserva</a>
+</div>
+
+</div>
+</div>
 {{/each}}
 
-
+</div>
