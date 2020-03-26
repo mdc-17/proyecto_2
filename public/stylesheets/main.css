@@ -34,7 +34,7 @@
     .search-sec{
         position: relative;
         top: -114px;
-        background: rgba(26, 70, 104, 0.51);
+        background: rgba(37, 87, 126, 0.246);
     }
 }
 
@@ -64,6 +64,7 @@ body{
 	min-width: 600px;
 	max-width: 900px;
 	margin: 0 auto;
+	padding-bottom: 50px;
 }
 
 .row {
