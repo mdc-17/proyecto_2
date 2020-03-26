@@ -23,7 +23,7 @@ Home.find({ host: req.session.currentUser._id })
 
 router.get('/aceptar/:id', (req, res, next) => {
 	const { id } = req.params;
-	Home.findOneAndUpdate({_id: id}, {statusRequest: 'Aceptado', requestAccepted: true})
+	Home.findOneAndUpdate({_id: id}, {$set: {statusRequest: 'Aceptado', requestAccepted: true}}, {new: true})
 		.then(() => {
 			Home.find({ host: req.session.currentUser._id })
 				.populate('guest')
@@ -37,14 +37,9 @@ router.get('/aceptar/:id', (req, res, next) => {
 
 router.get('/denegar/:id', (req, res, next) => {
 	const { id } = req.params;
-	Home.findOneAndUpdate({_id: id},  {statusRequest: '', $unset: {guest: 1}}, {new: true})
+	Home.findOneAndUpdate({_id: id},  {$set: {statusRequest: '', requestAccepted: false, guest: null}}, {new: true})
 		.then(() => {
-			Home.find({ host: req.session.currentUser._id })
-				.populate('guest')
-				.then((homes) => {	
-				res.render('publish/publish', { homes })	
-			})
-			.catch((err) => next(err))	
+				res.redirect('/publish/publish')	
 	})
 	.catch((err) => next(err))
 });
