@@ -35,11 +35,16 @@
 </div>
 
 {{#if guest}}
-<h3>¡Tiene usted una peticion de reserva!</h3>
+<h3>Gestión de reservas</h3>
+{{#unless requestAccepted}}
+<h4>¡Tiene usted una petición de reserva!</h4>
+{{/unless}}
 <p>Nombre: {{guest.username}}</p>
-<p>Numero de{{guest.phoneNumber}}</p>
+<p>Número de teléfono: {{guest.phoneNumber}}</p>
 <p>
+  {{#unless requestAccepted}}
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Aceptar</a>
+  {{/unless}}
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Denegar</button>
 </p>
 <div class="row">

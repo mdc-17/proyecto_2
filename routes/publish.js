@@ -23,7 +23,7 @@ Home.find({ host: req.session.currentUser._id })
 
 router.get('/aceptar/:id', (req, res, next) => {
 	const { id } = req.params;
-	Home.findOneAndUpdate({_id: id}, {statusRequest: 'Aceptado'})
+	Home.findOneAndUpdate({_id: id}, {statusRequest: 'Aceptado', requestAccepted: true})
 		.then(() => {
 			Home.find({ host: req.session.currentUser._id })
 				.populate('guest')
