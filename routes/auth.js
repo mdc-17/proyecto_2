@@ -48,6 +48,8 @@ router.post('/signup', (req, res, next) => {
       });
       return;
     }
+
+
   }) 
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -61,9 +63,8 @@ router.post('/signup', (req, res, next) => {
     };
 
     const theUser = new User(userSubmission);
-    
-    console.log('theUser', theUser)
-
+    console.log('--------->>>> Validation', theUser)
+   
     theUser.save(err => {
       if (err) {
         console.log(err);
