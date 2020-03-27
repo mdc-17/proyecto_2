@@ -61,18 +61,63 @@ I also want to see my booking requests which I made to a host.
 # POST /auth/signup #
 	We will send on the body:
     		Username
-		 Email
-		Password
+		 	Email
+			Password
     		Location
 	If the user's signup it's OK redirect to /auth/login.
 	If the user's signup it's not OK we will render /auth/signup with errors.
 # GET /auth/logout #
 	If there isn't an active session, redirect to /auth/login.
 	If there is an active session, we destroy the session an redirect to /auth/login.
+# GET /profile #
+	If it's OK we will render /profile
+	If it's not OK we will show errors.
+# GET /profile/edit #
+	If it's OK we will render /profile with the changes
+	If it's not OK we will show errors.	
+# POST /profile/edit #
+	If it's OK we will redirect /profile with the cloudinary photo
+	If it's not OK we will show errors.	
 # GET /publish #
 	If it's OK we will render /publish
 	If it's not OK we will show errors.
-
+# GET /publish/aceptar #
+	If it's OK we will render /publish with the changes in:
+		statusRequest
+		requestAccepted
+	If it's not OK we will show errors.
+# GET /publish/denegar #
+	If it's OK we will render /publish with the changes in:
+		statusRequest
+		requestAccepted
+		guest
+	If it's not OK we will show errors.
+# GET /publish/eliminar #
+	If it's OK we will render /publish with the house deleted
+	If it's not OK we will show errors.
+# GET /housing #
+	If it's OK we will render /housing
+	If it's not OK we will show errors.
+# POST /publish #
+	We will send on the body:
+    		Location
+	If it's not OK we will show errors.
+# GET /housing/view #
+	If it's OK we will render /housing/view with the search
+	If it's not OK we will show errors.
+# GET /housing #
+	If it's OK we will render /booking
+	If it's not OK we will show errors.
+# GET /housing/cancelar #
+	If it's OK we will render /publish with the changes in:
+		statusRequest
+		guest
+	If it's not OK we will show errors.
+# POST /housing/cancelar #
+	If it's OK we will redirect /publish with the changes in:
+		statusRequest
+		guest
+	If it's not OK we will show errors.
 
 ### Models ###
 
@@ -86,7 +131,6 @@ Model 1: User
     isHost: {type: Boolean, default:false},
     isGuest: {type: Boolean, default:false},
     requests: [ {type: String } ],
-    statusRequest: {type: String, enum: [“Aceptado”, “Denegado”, “Pendiente”]},
     phoneNumber: Number,
     hostRequest: String
 
@@ -99,20 +143,17 @@ Model 1: User
 Model 2: House
 
 {
-	host: {type: Schema.Types.ObjectId, ref: “User”},
-	guest: [ {type: Schema.Types.ObjectId, ref: “User”} ],
-	photo_house: [ {type: String}], 
-    location: String,
-    services: [{type: String}],
-    wifi: {type: Boolean, default: false},
-    washer: {type: Boolean, default: false},
-    dryer: {type: Boolean, default: false},
-    iron: {type: Boolean, default: false},
-    hairDryer: {type: Boolean, default: false},
-    towels: {type: Boolean, default: false},
-    heating: {type: Boolean, default: false},
-    airConditioner: {type: Boolean, default: false},
-    tv: {type: Boolean, default: false}
+	host: { type: Schema.Types.ObjectId, ref: 'User' },
+	guest: { type: Schema.Types.ObjectId, ref: 'User' },
+	hostRequest: String,
+	hostRequestDetail: String,
+	location: String,
+	address: String,
+	description: String,
+	homeImages: [ { type: String, require: true } ],
+	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
+	services: [ { type: String } ],
+	requestAccepted: { type: Boolean, default: false }
     
     //BACKLOG date: {type: date}
 }
