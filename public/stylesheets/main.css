@@ -9,7 +9,8 @@
 
 .search-sec{
     padding: 2rem;
-    transform: translateY(-250px);
+	transform: translateY(-250px);
+	border-radius: 20px;
 
 }
 .search-slt{
@@ -22,7 +23,7 @@
     background-image: none;
     border: 1px solid #ccc;
     height: calc(3rem + 2px) !important;
-    border-radius:0;
+    border-radius:50px;
 }
 .wrn-btn{
     width: 100%;
