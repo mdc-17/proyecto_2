@@ -2,8 +2,8 @@
 <div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto">
 
 
-
-<h1 class="card-title mx-auto mt-3">TUS RESERVAS</h1>
+{{#if mybookings}}
+<h1 class="card-title mx-auto mt-3">MIS RESERVAS</h1>
 {{#each mybookings}}
 
 <div class="card p-3 m-2" style="width: 50rem; background: rgba(158, 177, 191, 0.1);">
@@ -31,5 +31,10 @@
 </div>
 </div>
 {{/each}}
+{{else}}
+<h1 class="mx-auto mt-3">No has realizado ninguna reserva.</h1>
+
+
+{{/if}}
 
 </div>
