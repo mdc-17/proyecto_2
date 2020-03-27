@@ -173,5 +173,5 @@ URL: https://github.com/mdc-17/proyecto_2
 
 Slides
 
-URL: 
+URL: https://docs.google.com/presentation/d/1Wjp2we8RmwArsQWWlZFjrq3XxGu-zS5acDtULlghbfc/edit?usp=sharing
 
