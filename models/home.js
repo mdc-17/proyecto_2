@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 const homeSchema = new Schema({
 	host: { type: Schema.Types.ObjectId, ref: 'User' },
 	guest: { type: Schema.Types.ObjectId, ref: 'User' },
-	hostRequest: String,
-	hostRequestDetail: String,
-	location: String,
-	address: String,
+	hostRequest: {type: String, required: true},
+	hostRequestDetail: {type: String, required: true},
+	location: {type: String, required: true},
+	address: {type: String, unique: true, required: true},
 	description: String,
-	homeImages: [ { type: String, require: true } ],
+	homeImages: [ { type: String, required: true } ],
 	statusRequest: { type: String, enum: [ 'Aceptado', 'Denegado', 'Pendiente' ] },
 	services: [ { type: String } ],
 	requestAccepted: { type: Boolean, default: false }
