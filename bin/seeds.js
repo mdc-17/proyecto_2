@@ -18,6 +18,8 @@ const homes = [
 	requestAccepted: false
   }
 ]
+
+
   Home.create(homes, (err) => {
     if (err) { throw(err) }
     console.log(`Created ${homes.length} homes`)
